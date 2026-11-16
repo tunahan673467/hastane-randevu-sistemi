@@ -1,5 +1,7 @@
 package tr.ndp.hastane;
 
+import static tr.ndp.hastane.Oturum.*;
+
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -9,17 +11,6 @@ import org.springframework.web.util.HtmlUtils;
 public final class Sayfa {
     public static String metin(Object s) {
         return s == null ? "—" : HtmlUtils.htmlEscape(String.valueOf(s));
-    }
-
-    public static boolean rol(HttpSession s, String rol) {
-        return rol.equals(s.getAttribute("rol"));
-    }
-
-    public static long yetki(HttpSession s, String... roller) {
-        for (String rol : roller) {
-            if (rol(s, rol)) return (Long) s.getAttribute("id");
-        }
-        throw new IllegalArgumentException("Bu işlem için uygun hesapla giriş yapın.");
     }
 
     public static String alan(String ad, String etiket, String tur) {

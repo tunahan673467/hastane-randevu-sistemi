@@ -35,7 +35,6 @@ small, .muted { color: var(--muted); }
 .story-main { flex: 1; padding-top: 64px; position: relative; }
 .pill { display: inline-block; font-size: 9px; letter-spacing: 1.6px; border: 1px solid #567367; border-radius: 30px; padding: 8px 12px; color: #d5e9b0; }
 .story-main h1 { font-size: clamp(32px,3.2vw,48px); line-height: 1.25; font-weight: 600; letter-spacing: -1px; margin: 24px 0; }
-.story-main em { color: #d5e9b0; font-style: normal; }
 .story-main p { color: #bbcec4; line-height: 1.8; font-size: 16px; }
 .story-features { margin-top: 38px; border-top: 1px solid #ffffff25; }
 .story-features div { display: flex; gap: 20px; padding: 17px 0; border-bottom: 1px solid #ffffff25; color: #a9c3b6; font-size: 12px; }
@@ -134,8 +133,7 @@ footer { font-size: 10px; color: #99a398; padding-top: 20px; }
     .story-main { padding-top: 35px; }
     .story-main h1 { font-size: 42px; letter-spacing: -1px; }
     .story-main h1 br { display: none; }
-    .story-main h1 em { display: block; }
-    .story-illustration, .story-footer { display: none; }
+    .story-footer { display: none; }
     .auth-main { padding: 25px; }
     .auth-box { margin: 25px auto; }
     .auth-top { justify-content: center; }

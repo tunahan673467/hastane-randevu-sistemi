@@ -1,14 +1,14 @@
 package tr.ndp.hastane;
 
+import static tr.ndp.hastane.Oturum.*;
+
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.*;
 import java.math.*;
 import static tr.ndp.hastane.Sayfa.*;
 
 @Controller
-@Order(5)
 public record Hizmetler(Katalog k) implements Bolme {
     public String goster(HttpSession s) {
         if(!rol(s,"Yönetici")) return "";

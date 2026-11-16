@@ -1,15 +1,15 @@
 package tr.ndp.hastane;
 
+import static tr.ndp.hastane.Oturum.*;
+
 import java.time.*;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import static tr.ndp.hastane.Sayfa.*;
 
 @Controller
-@Order(9)
 public record Randevular(JdbcTemplate db,Rezervasyon servis) implements Bolme {
     public String goster(HttpSession s) {
         if(s.getAttribute("id")==null) return "";

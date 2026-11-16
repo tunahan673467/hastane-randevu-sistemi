@@ -1,14 +1,14 @@
 package tr.ndp.hastane;
 
+import static tr.ndp.hastane.Oturum.*;
+
 import jakarta.servlet.http.HttpSession;
-import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import static tr.ndp.hastane.Sayfa.*;
 
 @Controller
-@Order(10)
 public record Kararlar(JdbcTemplate db) implements Bolme {
     public String goster(HttpSession s) {
         if(!rol(s,"Doktor") && !rol(s,"Sağlık personeli")) return "";

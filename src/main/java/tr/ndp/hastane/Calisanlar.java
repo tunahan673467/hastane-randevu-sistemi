@@ -1,18 +1,18 @@
 package tr.ndp.hastane;
 
+import static tr.ndp.hastane.Oturum.*;
+
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import static tr.ndp.hastane.Sayfa.*;
 
 @Controller
-@Order(6)
 public record Calisanlar(Katalog k, HesapServisi hesaplar) implements Bolme {
     public String goster(HttpSession s) {
         if(!rol(s,"Yönetici")) return "";
-        return "<div class='notice'><h3>Çalışan hesapları</h3><p>Önce şube ve bölüm oluşturun. Aşağıdan doktor veya sağlık personeli hesabı açın. Çalışan, belirlediğiniz kullanıcı adı ve parolayla giriş ekranındaki <strong>Çalışan</strong> sekmesinden oturum açar. Kayıtlı hesapları bu sayfanın altındaki ekip listesinde görebilirsiniz.</p></div>" + form(s,"/calisan","Çalışan hesabı oluştur",Kimlik.alanlar()+k.bolum()+alan("uzmanlik","Uzmanlık","text")+"<label>Rol<select name='tur'><option>Doktor</option><option>Sağlık personeli</option></select></label>","Kaydet")
+        return "<div class='notice'><h3>Çalışan hesapları</h3><p>Önce şube ve bölüm oluşturun. Aşağıdan doktor veya sağlık personeli hesabı açın. Çalışan, belirlediğiniz kullanıcı adı ve parolayla giriş ekranındaki <strong>Çalışan</strong> sekmesinden oturum açar. Kayıtlı hesapları bu sayfanın altındaki ekip listesinde görebilirsiniz.</p></div>" + form(s,"/calisan","Çalışan hesabı oluştur",GirisSayfasi.alanlar()+k.bolum()+alan("uzmanlik","Uzmanlık","text")+"<label>Rol<select name='tur'><option>Doktor</option><option>Sağlık personeli</option></select></label>","Kaydet")
                 +form(s,"/ata","Çalışana hizmet ata",k.personel()+k.hizmet(),"Ata");
     }
 

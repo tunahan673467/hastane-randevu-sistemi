@@ -20,3 +20,4 @@ Giriş ekranından Yönetici, Hasta veya Çalışan sekmesini seçin. İlk yöne
 Panelde şubeler, hizmetler, çalışanlar, mesailer ve randevular ayrı sayfalarda bulunur. Kod açıklamaları Web-Kod-Rehberi.pdf dosyasındadır.
 
 Giriş ekranındaki Yönetici hesabı oluştur bağlantısı da hesap oluşturma formunu açar. İlk kurulumdan sonra mevcut yönetici kullanıcı adı ve parolasıyla doğrulama gerekir. Çalışan hesaplarını yönetici Çalışanlar sayfasından açar; çalışanlar giriş ekranındaki Çalışan sekmesini kullanır.
+

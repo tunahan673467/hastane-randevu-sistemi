@@ -1,15 +1,15 @@
 package tr.ndp.hastane;
 
+import static tr.ndp.hastane.Oturum.*;
+
 import jakarta.servlet.http.HttpSession;
 import java.time.*;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import static tr.ndp.hastane.Sayfa.*;
 
 @Controller
-@Order(8)
 public record SaatSecimi(JdbcTemplate db, Takvim takvim) implements Bolme {
     public String goster(HttpSession s) {
         if (!rol(s, "Hasta")) return "";
