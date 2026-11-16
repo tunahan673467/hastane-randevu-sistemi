@@ -20,13 +20,15 @@ public record Subeler(Katalog k) implements Bolme {
     String kurum(HttpSession s,@RequestParam String ad,@RequestParam LocalTime ac,@RequestParam LocalTime kapa) {
         yetki(s,"Yönetici");
         k.db().update("insert into kurum(ad,ac,kapa) values(?,?,?)",ad.strip(),ac,kapa);
-        return "redirect:/";
+        s.setAttribute("bildirim", "İşlem başarıyla tamamlandı.");
+        return "redirect:/?sayfa=subeler";
     }
 
     @PostMapping("/bolum")
     String bolum(HttpSession s,@RequestParam long kurum,@RequestParam String ad) {
         yetki(s,"Yönetici");
         k.db().update("insert into bolum(kurum,ad) values(?,?)",kurum,ad.strip());
-        return "redirect:/";
+        s.setAttribute("bildirim", "İşlem başarıyla tamamlandı.");
+        return "redirect:/?sayfa=subeler";
     }
 }

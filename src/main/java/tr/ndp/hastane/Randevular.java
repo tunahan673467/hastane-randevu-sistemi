@@ -28,6 +28,7 @@ public record Randevular(JdbcTemplate db,Rezervasyon servis) implements Bolme {
     @PostMapping("/ayir")
     String ayir(HttpSession s,@RequestParam long kisi,@RequestParam long hizmet,@RequestParam LocalDate gun,@RequestParam LocalTime ilk) {
         servis.ayir(yetki(s,"Hasta"),new Takvim.Secim(kisi,hizmet,gun),ilk);
-        return "redirect:/";
+        s.setAttribute("bildirim", "İşlem başarıyla tamamlandı.");
+        return "redirect:/?sayfa=randevular";
     }
 }

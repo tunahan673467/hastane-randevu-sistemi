@@ -19,6 +19,7 @@ public record Hizmetler(Katalog k) implements Bolme {
     String hizmet(HttpSession s,@RequestParam long bolum,@RequestParam String ad,@RequestParam int sure,@RequestParam BigDecimal ucret) {
         yetki(s,"Yönetici");
         k.db().update("insert into hizmet(bolum,ad,sure,ucret) values(?,?,?,?)",bolum,ad.strip(),sure,ucret.setScale(2,RoundingMode.UNNECESSARY));
-        return "redirect:/";
+        s.setAttribute("bildirim", "İşlem başarıyla tamamlandı.");
+        return "redirect:/?sayfa=hizmetler";
     }
 }

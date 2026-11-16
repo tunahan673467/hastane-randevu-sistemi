@@ -23,6 +23,7 @@ public record Kararlar(JdbcTemplate db) implements Bolme {
         if(!karar.equals("Onaylandı") && !karar.equals("Reddedildi")) throw new IllegalArgumentException("Geçersiz karar.");
         if(db.update("update randevu set durum=? where id=? and personel=? and durum='Bekliyor'",karar,id,kisi)!=1)
             throw new IllegalArgumentException("Bu talep artık değerlendirilemiyor.");
-        return "redirect:/";
+        s.setAttribute("bildirim", "İşlem başarıyla tamamlandı.");
+        return "redirect:/?sayfa=kararlar";
     }
 }

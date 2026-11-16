@@ -44,14 +44,14 @@ class WebAkisiTest {
         var h=oturum();
         yaz(h,"/hasta","ad","Hasta","hesap","hasta","parola","deneme123");
         yaz(h,"/giris","hesap","hasta","parola","deneme123");
-        mvc.perform(get("/").session(h)).andExpect(content().string(containsString("Merkez / Dahiliye")));
+        mvc.perform(get("/").param("sayfa","randevu").session(h)).andExpect(content().string(containsString("Merkez / Dahiliye")));
         mvc.perform(get("/saatler").session(h).param("secim","2-1").param("gun",gun))
                 .andExpect(content().string(containsString("<option>09:00</option>")));
         yaz(h,"/ayir","kisi","2","hizmet","1","gun",gun,"ilk","09:00");
         mvc.perform(post("/karar").session(h).param("anahtar",(String)h.getAttribute("anahtar")).param("id","1").param("karar","Onaylandı")).andExpect(status().isBadRequest());
         var dr=oturum();
         yaz(dr,"/giris","hesap","dr","parola","deneme123");
-        mvc.perform(get("/").session(dr)).andExpect(content().string(containsString("Talep değerlendir")));
+        mvc.perform(get("/").param("sayfa","kararlar").session(dr)).andExpect(content().string(containsString("Talep değerlendir")));
         yaz(dr,"/karar","id","1","karar","Onaylandı");
         mvc.perform(get("/").session(h)).andExpect(content().string(containsString("Onaylandı")));
     }
